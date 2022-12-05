@@ -1,19 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, RefObject, Ref } from 'react'
 
-import PlayLists from '../components/Playlists/Playlist'
+import AudioPlayer from '../components/AudioPlayer/AudioPlayer'
 import Radio from '../components/Radio/Radio'
 
 import radio from '../data/Radio/Radio_data.json'
+
 
 import PlaylistProps from "../types/PlaylistProps";
 
 
 export default function Home() {
-  
-  let data: PlaylistProps[] = radio.data;
-  
+  const [currentPlay, setCurrentPlay] = useState<number>(0);
+  const [currentData , setCurrentData] = useState<PlaylistProps[]>(radio.data);
+  const audioRef = useRef() as React.MutableRefObject<HTMLAudioElement>;
+
   return (
     <div>
       <Head>
@@ -24,13 +26,11 @@ export default function Home() {
 
       <main>
         <div>
-          {data.map((item, index) => (
-            <>
-              <Radio data={item}/>
-            </>
+          {currentData.map((item, index) => (
+            <Radio data={item} setCurrentData={setCurrentData} key={index} currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} />
           ))}
         </div>
-        <PlayLists data={data}/>
+        <AudioPlayer currentData={currentData} currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} forwardedRef={audioRef}/>
       </main>
 
       

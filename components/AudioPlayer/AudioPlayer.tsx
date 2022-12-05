@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect, Dispatch, MutableRefObject } from 'react'
 import PlaylistProps from "../../types/PlaylistProps";
 
-function PlayList({ data }: { data: PlaylistProps[] }) {
-  const [currentPlay, setCurrentPlay] = useState<number>(0);
+function PlayList({ currentData, currentPlay, setCurrentPlay, forwardedRef }: 
+  { currentData: PlaylistProps[], currentPlay: number, setCurrentPlay: Dispatch<number>, forwardedRef: MutableRefObject<HTMLAudioElement> }) {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentPlayTime, setCurrentPlayTime] = useState<string>("0:00");
   const [currentPlayDuration, setCurrentPlayDuration] = useState<string>("0:00");
-  const audioRef = useRef<any>();
+  const audioRef = forwardedRef;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -15,7 +15,7 @@ function PlayList({ data }: { data: PlaylistProps[] }) {
     }, 1000);
     return () => clearInterval(interval);
 
-  }, []);
+  }, [audioRef]);
   function secondToTime(e: number) {
     const h = Math.floor(e / 3600).toString().padStart(2,'0'),
           m = Math.floor(e % 3600 / 60).toString().padStart(2,'0'),
@@ -33,25 +33,24 @@ function PlayList({ data }: { data: PlaylistProps[] }) {
       return `${h}:${m}:${s}`;
     }
   }
-
   
   let ControlButtonMusic = (selector: string) => {
     console.log(currentPlay)
-    let index = data.findIndex((item: { id: number; }) => item.id === currentPlay);
+    let index = currentData.findIndex((item: { id: number; }) => item.id === currentPlay);
 
     if (selector === "next") {
-      if (index === data.length - 1) {
+      if (index === currentData.length - 1) {
         index = -1;
       }
-      if (index === data.length) {
-        setCurrentPlay(data[0].id);
+      if (index === currentData.length) {
+        setCurrentPlay(currentData[0].id);
         if(audioRef.current){
           audioRef.current.pause();
           audioRef.current.load();
           audioRef.current.play();
         }
       }
-      setCurrentPlay(data[index + 1].id);
+      setCurrentPlay(currentData[index + 1].id);
       if(audioRef.current){
         audioRef.current.pause();
         audioRef.current.load();
@@ -60,7 +59,7 @@ function PlayList({ data }: { data: PlaylistProps[] }) {
     }
     if (selector === "prev") {
        if (index - 1 === -1) {
-        setCurrentPlay(data[data.length - 1].id);
+        setCurrentPlay(currentData[currentData.length - 1].id);
         if(audioRef.current){
           audioRef.current.pause();
           audioRef.current.load();
@@ -68,7 +67,7 @@ function PlayList({ data }: { data: PlaylistProps[] }) {
         }
       }
       if (index > 0) {
-        setCurrentPlay(data[index - 1].id);
+        setCurrentPlay(currentData[index - 1].id);
         if(audioRef.current){
           audioRef.current.pause();
           audioRef.current.load();
@@ -78,7 +77,7 @@ function PlayList({ data }: { data: PlaylistProps[] }) {
     }
   }
   let PauseMusic = () => {
-    console.log(isPlaying)
+    // console.log(isPlaying)
     if(audioRef.current && isPlaying){
       audioRef.current.pause();
       setIsPlaying(false);
@@ -89,13 +88,12 @@ function PlayList({ data }: { data: PlaylistProps[] }) {
     }
   }
   
-  
   return (
     <>
       <div>
-        <h1>{data[currentPlay].title}</h1>
+        <h1>{currentData[currentPlay].title}</h1>
         <audio controls preload="none" ref={audioRef}>
-          <source src={data[currentPlay].url} type="audio/mpeg" />
+          <source src={currentData[currentPlay].url} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
         <h1>Time {currentPlayTime}</h1>
