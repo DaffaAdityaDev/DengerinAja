@@ -5,27 +5,14 @@ import React, { useState, useRef, useEffect } from 'react'
 import PlayLists from '../components/Playlists/Playlist'
 import Radio from '../components/Radio/Radio'
 
-import PlaylistProps from "../components/types/PlaylistProps";
+import radio from '../data/Radio/Radio_data.json'
+
+import PlaylistProps from "../types/PlaylistProps";
+
 
 export default function Home() {
   
-  
-  let data: PlaylistProps[] = [{
-    id: 0,
-    title: "RIM Pilgrim",
-    artist: "RIM",
-    album: "RIM Pilgrim",
-    url: "/audio/RIM_Pilgrim.mp3",
-    img: "img",
-    
-    },{
-    id: 1,
-    title: "Bury the Light",
-    artist: "Casey Edwards/Victor Borba",
-    album: "Bury the Light",
-    url: "/audio/Bury the Light Vergils battle theme from Devil May Cry 5.mp3",
-    img: "img",
-  }]
+  let data: PlaylistProps[] = radio.data;
   
   return (
     <div>
@@ -36,7 +23,13 @@ export default function Home() {
       </Head>
 
       <main>
-        <Radio data={data}/>
+        <div>
+          {data.map((item, index) => (
+            <>
+              <Radio data={item}/>
+            </>
+          ))}
+        </div>
         <PlayLists data={data}/>
       </main>
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import PlaylistProps from "../types/PlaylistProps";
+import PlaylistProps from "../../types/PlaylistProps";
 
 function PlayList({ data }: { data: PlaylistProps[] }) {
   const [currentPlay, setCurrentPlay] = useState<number>(0);
