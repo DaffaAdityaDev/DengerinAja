@@ -1,4 +1,4 @@
-type PlaylistProps = {
+type PlaylistPropsType = {
     id: number,
     title: string,
     artist: string,
@@ -7,4 +7,4 @@ type PlaylistProps = {
     img: string
 }
 
-export default PlaylistProps;
+export default PlaylistPropsType;
