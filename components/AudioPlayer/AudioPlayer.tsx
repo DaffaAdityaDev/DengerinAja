@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Dispatch, MutableRefObject } from 'react'
 import PlaylistProps from "../../types/PlaylistPropsType";
 
-function PlayList({ currentData, currentPlay, setCurrentPlay, forwardedRef }: 
+function AudioPlayer({ currentData, currentPlay, setCurrentPlay, forwardedRef }: 
   { currentData: PlaylistProps[], currentPlay: number, setCurrentPlay: Dispatch<number>, forwardedRef: MutableRefObject<HTMLAudioElement> }) {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentPlayTime, setCurrentPlayTime] = useState<string>("0:00");
@@ -106,4 +106,4 @@ function PlayList({ currentData, currentPlay, setCurrentPlay, forwardedRef }:
 
 
 
-export default PlayList;
+export default AudioPlayer;

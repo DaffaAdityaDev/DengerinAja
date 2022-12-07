@@ -1,20 +1,21 @@
 
 {
     "data" : [{
-        "id": 0,
-        "title": "RIM Pilgrim",
-        "artist": "RIM",
-        "album": "RIM Pilgrim",
-        "url": "/audio/RIM_Pilgrim.mp3",
-        "img": "img"
-        
+            "id": 0,
+            "title": "RIM Pilgrim",
+            "artist": "RIM",
+            "album": "RIM Pilgrim",
+            "url": "/audio/RIM_Pilgrim.mp3",
+            "img": "img",
+            "slug": "Radio_Rim"
         },{
-        "id": 1,
-        "title": "Bury the Light",
-        "artist": "Casey Edwards/Victor Borba",
-        "album": "Bury the Light",
-        "url": "/audio/Bury the Light Vergils battle theme from Devil May Cry 5.mp3",
-        "img": "img"
+            "id": 1,
+            "title": "Bury the Light",
+            "artist": "Casey Edwards/Victor Borba",
+            "album": "Bury the Light",
+            "url": "/audio/Bury the Light Vergils battle theme from Devil May Cry 5.mp3",
+            "img": "img",
+            "slug": "Radio_Burry_the_Light"
         }
     ]
 }

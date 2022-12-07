@@ -1,20 +1,23 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useState, useRef, useEffect, RefObject, Ref } from 'react'
 
 import AudioPlayer from '../components/AudioPlayer/AudioPlayer'
 import Radio from '../components/Radio/Radio'
 
-import radio from '../data/Radio/Radio_data.json'
+import radioData from '../data/Radio/Radio_data.json'
 
 import PlaylistPropsType from "../types/PlaylistPropsType";
 import IsPlayingType from '../types/IsplayingType'
+import RadioContainer from '../layout/RadioContainer/RadioContainer'
 
-export default function Home() {
+export default function Home({ test, setTest }) {
   const [currentPlay, setCurrentPlay] = useState<number>(0);
-  const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(radio.data);
+  const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(radioData.data);
   const [isPlaying, setIsPlaying] = useState<any[]>([]);
   const audioRef = useRef() as React.MutableRefObject<HTMLAudioElement>;
+
 
   useEffect(() => {
       fillIsPlaying();
@@ -25,7 +28,20 @@ export default function Home() {
     for(let i = 0; i < currentData.length; i++) {
       arr.push({id: currentData[i].id, isPlaying: false});
     }
+    
     setIsPlaying(arr);
+  }
+
+  function addData() {
+    let arr = [];
+    for(let i = 0; i < 4; i++) {
+      arr.push({id: currentData.length + i, album: "test", artist: "test", url: "test"})
+    }
+    setCurrentData([...currentData, ...arr]);
+  }
+
+  const increase = () => {
+    setTest(test + 1);
   }
 
   return (
@@ -37,17 +53,17 @@ export default function Home() {
       </Head>
       
       <main> 
-        <div>
+        <RadioContainer>
           {currentData.map((item, index) => (
-            <Radio data={item} setCurrentData={setCurrentData} key={index} 
+            <Radio data={item} setCurrentData={setCurrentData} key={index}
             currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} 
             forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
           ))}
-        </div>
+        </RadioContainer>
         <AudioPlayer currentData={currentData} currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} forwardedRef={audioRef}/>
+        <button onClick={e=> addData()}>ADd Data</button>
+        <h1 onClick={e => increase()}>{test}</h1>
       </main>
-
-      
     </div>
   )
 }

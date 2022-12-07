@@ -4,7 +4,8 @@ type PlaylistPropsType = {
     artist: string,
     album: string,
     url: string,
-    img: string
+    img: string,
+    slug: string,
 }
 
 export default PlaylistPropsType;

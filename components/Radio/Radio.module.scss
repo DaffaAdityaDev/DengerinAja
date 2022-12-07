@@ -6,9 +6,9 @@ $primary-color: #0078d4;
     cursor: pointer;
     user-select: none;
     background-color: red;
-    max-width: 360px;
     height: 100px;
-    margin: 2rem;
+    flex-grow: 1;
+    // margin: 2rem;
     border-radius: 5px;
 
     .radio__imgContainer {
@@ -25,18 +25,32 @@ $primary-color: #0078d4;
         align-items: center;
         width: 100%;
         justify-content: space-between;
+        text-decoration: none;
 
         .radio__name {
             font-size: 16px;
             font-weight: 400;
             color: white;
-            margin-left: 8px;
+            margin: 0 1rem 0 1rem;
         }
-        .play__button{
-            background-color: aqua;
-            border: none;
-            padding: 0.5rem;
-            cursor: pointer;
+        
+    }
+    .play__button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: $primary-color;
+        margin: 0 1rem 0 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            background-color: darken($primary-color, 10%);
         }
+        position: relative;
+        border: none;
+        margin: auto 1rem auto auto;
     }
 }
