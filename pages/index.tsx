@@ -12,9 +12,12 @@ import PlaylistPropsType from "../types/PlaylistPropsType";
 import IsPlayingType from '../types/IsplayingType'
 import RadioContainer from '../layout/RadioContainer/RadioContainer'
 
-export default function Home({ test, setTest }) {
-  const [currentPlay, setCurrentPlay] = useState<number>(0);
-  const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(radioData.data);
+export default function Home({ currentPlay, setCurrentPlay, currentData, setCurrentData } : {
+  currentPlay: number, setCurrentPlay: React.Dispatch<React.SetStateAction<number>>,
+  currentData: PlaylistPropsType[], setCurrentData: React.Dispatch<React.SetStateAction<PlaylistPropsType[]>>
+}) {
+  // const [currentPlay, setCurrentPlay] = useState<number>(0);
+  // const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(radioData.data);
   const [isPlaying, setIsPlaying] = useState<any[]>([]);
   const audioRef = useRef() as React.MutableRefObject<HTMLAudioElement>;
 
@@ -40,9 +43,6 @@ export default function Home({ test, setTest }) {
     setCurrentData([...currentData, ...arr]);
   }
 
-  const increase = () => {
-    setTest(test + 1);
-  }
 
   return (
     <div>
@@ -60,9 +60,7 @@ export default function Home({ test, setTest }) {
             forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
           ))}
         </RadioContainer>
-        <AudioPlayer currentData={currentData} currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} forwardedRef={audioRef}/>
         <button onClick={e=> addData()}>ADd Data</button>
-        <h1 onClick={e => increase()}>{test}</h1>
       </main>
     </div>
   )

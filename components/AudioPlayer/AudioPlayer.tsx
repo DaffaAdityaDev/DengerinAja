@@ -1,5 +1,9 @@
 import React, { useState, useEffect, Dispatch, MutableRefObject } from 'react'
+import Link from 'next/link'
+import Image from 'next/image';
+
 import PlaylistProps from "../../types/PlaylistPropsType";
+import styles from './AudioPlayer.module.scss'
 
 function AudioPlayer({ currentData, currentPlay, setCurrentPlay, forwardedRef }: 
   { currentData: PlaylistProps[], currentPlay: number, setCurrentPlay: Dispatch<number>, forwardedRef: MutableRefObject<HTMLAudioElement> }) {
@@ -85,20 +89,30 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, forwardedRef }:
       setIsPlaying(true);
     }
   }
+  console.log(currentData)
   
   return (
     <>
-      <div>
-        <h1>{currentData[currentPlay].title}</h1>
-        <audio controls preload="none" ref={forwardedRef}>
-          <source src={currentData[currentPlay].url} type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
-        <h1>Time {currentPlayTime}</h1>
-        <h1>Duration {currentPlayDuration}</h1>
-        <button onClick={e => PauseMusic()}>Pause</button>
-        <button onClick={e => ControlButtonMusic("prev")}>prev</button>
-        <button onClick={e => ControlButtonMusic("next")}>next</button>
+      <div className={styles.Audio__container}>
+        <div className={styles.contentInfo}>
+          <Image src="/Image/Music_placeholder.jpg" width={50} height={50} alt={''}/>
+          <div>
+            <h1 className={styles.contentInfo__title}>{currentData[currentPlay].title}</h1>
+            <h1 className={styles.contentInfo__artist}>{currentData[currentPlay].artist}</h1>
+          </div>
+        </div>
+        <div>
+          <audio controls preload="none" ref={forwardedRef}>
+            <source src={currentData[currentPlay].url} type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          <h1>Time {currentPlayTime}</h1>
+          <h1>Duration {currentPlayDuration}</h1>
+          <button onClick={e => PauseMusic()}>Pause</button>
+          <button onClick={e => ControlButtonMusic("prev")}>prev</button>
+          <button onClick={e => ControlButtonMusic("next")}>next</button>
+        </div>
+        <div></div>
       </div>
     </>
   )
