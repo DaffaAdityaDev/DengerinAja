@@ -10,6 +10,9 @@ export default function App({ Component, pageProps }: AppProps) {
   const [currentPlay, setCurrentPlay] = useState<number>(0);
   const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(radioData.data);
   const audioRef = useRef() as React.MutableRefObject<HTMLAudioElement>;
+  const sliderRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const sliderVolumeRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
 
   return (
     <ControlPanelContainer 
@@ -17,13 +20,17 @@ export default function App({ Component, pageProps }: AppProps) {
         setCurrentPlay={setCurrentPlay}
         currentData={currentData}
         setCurrentData={setCurrentData}
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        sliderRef={sliderRef}
+        sliderVolumeRef={sliderVolumeRef}>
       <Component 
         {...pageProps} 
         currentPlay={currentPlay}
         setCurrentPlay={setCurrentPlay}
         currentData={currentData}
         setCurrentData={setCurrentData}
+        audioRef={audioRef}
+        sliderRef={sliderRef}
       />
     </ControlPanelContainer>
   )

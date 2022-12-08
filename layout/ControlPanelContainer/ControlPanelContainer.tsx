@@ -7,10 +7,11 @@ import PlaylistPropsType from "../../types/PlaylistPropsType";
 
 
 
-function ControlPanelContainer({ currentPlay, setCurrentPlay, currentData, setCurrentData, audioRef, children } : {
+function ControlPanelContainer({ currentPlay, setCurrentPlay, currentData, setCurrentData, audioRef, sliderRef, sliderVolumeRef, children } : {
   currentPlay: number, setCurrentPlay: React.Dispatch<React.SetStateAction<number>>,
   currentData: PlaylistPropsType[], setCurrentData: React.Dispatch<React.SetStateAction<PlaylistPropsType[]>>,
-  audioRef: React.MutableRefObject<HTMLAudioElement>, children: React.ReactNode}) {
+  audioRef: React.MutableRefObject<HTMLAudioElement>, sliderRef: React.MutableRefObject<HTMLInputElement>, 
+  sliderVolumeRef: React.MutableRefObject<HTMLInputElement>,children: React.ReactNode}) {
     
   return (
     <>
@@ -41,7 +42,9 @@ function ControlPanelContainer({ currentPlay, setCurrentPlay, currentData, setCu
           </div>
         </nav>
         <div className={styles.Root__audioPlayer}>
-          <AudioPlayer currentData={currentData} currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} forwardedRef={audioRef}/>
+          <AudioPlayer currentData={currentData} currentPlay={currentPlay} 
+          setCurrentPlay={setCurrentPlay} audioRef={audioRef} 
+          sliderRef={sliderRef} sliderVolumeRef={sliderVolumeRef}/>
         </div>
         <div className={styles.Root__mainView}>{children}</div>
       </div>

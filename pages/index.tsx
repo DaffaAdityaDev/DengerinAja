@@ -12,14 +12,16 @@ import PlaylistPropsType from "../types/PlaylistPropsType";
 import IsPlayingType from '../types/IsplayingType'
 import RadioContainer from '../layout/RadioContainer/RadioContainer'
 
-export default function Home({ currentPlay, setCurrentPlay, currentData, setCurrentData } : {
+export default function Home({ currentPlay, setCurrentPlay, currentData, setCurrentData, audioRef } : {
   currentPlay: number, setCurrentPlay: React.Dispatch<React.SetStateAction<number>>,
-  currentData: PlaylistPropsType[], setCurrentData: React.Dispatch<React.SetStateAction<PlaylistPropsType[]>>
+  currentData: PlaylistPropsType[], setCurrentData: React.Dispatch<React.SetStateAction<PlaylistPropsType[]>>,
+  audioRef: React.MutableRefObject<HTMLAudioElement>
 }) {
   // const [currentPlay, setCurrentPlay] = useState<number>(0);
   // const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(radioData.data);
   const [isPlaying, setIsPlaying] = useState<any[]>([]);
-  const audioRef = useRef() as React.MutableRefObject<HTMLAudioElement>;
+  // const audioRef = useRef() as React.MutableRefObject<HTMLAudioElement>;
+  // const sliderRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
 
   useEffect(() => {
