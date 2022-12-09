@@ -11,6 +11,7 @@ import radioData from '../data/Radio/Radio_data.json'
 import PlaylistPropsType from "../types/PlaylistPropsType";
 import IsPlayingType from '../types/IsplayingType'
 import RadioContainer from '../layout/RadioContainer/RadioContainer'
+import RadioBox from '../components/RadioBox/RadioBox'
 
 export default function Home({ currentPlay, setCurrentPlay, currentData, setCurrentData, audioRef } : {
   currentPlay: number, setCurrentPlay: React.Dispatch<React.SetStateAction<number>>,
@@ -63,6 +64,11 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
           ))}
         </RadioContainer>
         <button onClick={e=> addData()}>ADd Data</button>
+        {currentData.map((item, index) => {
+          return (
+            <RadioBox key={index}/>
+          )
+        })}
       </main>
     </div>
   )

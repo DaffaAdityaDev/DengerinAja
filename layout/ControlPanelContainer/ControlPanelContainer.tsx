@@ -25,12 +25,18 @@ function ControlPanelContainer({ currentPlay, setCurrentPlay, currentData, setCu
           </div>
         </div>
         <nav className={styles.Root__navbar}>
-          <ul>
-            <li>Home</li>
-            <li>Library</li>
-            <li>Search</li>
-          </ul>
-          <div>
+          <div className={styles.Root__navbarList}>
+            <h1 className={styles.Root__navbar_logo}>Dengerin aja</h1>
+            <ul>
+              <div className={styles.Root__navbar_main}>
+                <Image src="/icon/icons8-home-page-96.png" />
+                <li>Home</li>
+              </div>
+              <li>Library</li>
+              <li>Search</li>
+            </ul>
+          </div>
+          <div className={styles.Root__navbar_playlistAndLike}>
             <div>
               <button>Create Playlist</button>
             </div>

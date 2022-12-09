@@ -128,7 +128,7 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
           </audio>
           <h1>Time {currentPlayTime}</h1>
           <h1>Duration {currentPlayDuration}</h1>
-          <button onClick={e => PauseMusic()}>Pause</button>
+          <button onClick={e => PauseMusic()}>{isPlaying ? "Pause" : "Play"}</button>
           <button onClick={e => ControlButtonMusic("prev")}>prev</button>
           <button onClick={e => ControlButtonMusic("next")}>next</button>
           <h1>{currentVolume}</h1>

@@ -16,18 +16,47 @@
         height: 60px;
         background-color: beige;
     }
+
     .Root__navbar {
         grid-area: navbar;
         width: 200px;
         height: 100%;
-        background-color: antiquewhite;
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        padding: 1rem;
+    
+        .Root__navbar_logo {
+            font-size: 32px;
+            // text-align: center;
+        }
+        .Root__navbar_main {
+            display: flex;
+        }
+        .Root__navbarList {
+            margin-top: 1rem;
+            list-style: none;
+            padding: 0;
+            li {
+                margin-top: 1rem;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+        .Root__navbar_playlistAndLike {
+            margin-top: 1rem;
+        }
     }
+
     .Root__audioPlayer {
         grid-area: audio-player;
         width: 100%;
         height: 100px;
         background-color: aquamarine;
     }
+
     .Root__mainView {
         grid-area: main-view;
         width: 100%;
