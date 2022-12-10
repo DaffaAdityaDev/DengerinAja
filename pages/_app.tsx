@@ -13,6 +13,8 @@ export default function App({ Component, pageProps }: AppProps) {
   const sliderRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const sliderVolumeRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
+  // console.log(currentData, currentPlay)
+
 
   return (
     <ControlPanelContainer 

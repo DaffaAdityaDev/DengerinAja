@@ -6,7 +6,9 @@ import React, { useState, useRef, useEffect, RefObject, Ref } from 'react'
 import AudioPlayer from '../components/AudioPlayer/AudioPlayer'
 import Radio from '../components/Radio/Radio'
 
-import radioData from '../data/Radio/Radio_data.json'
+import RadioData from '../data/Radio/Radio_data.json'
+
+import PlaylistPop from '../data/Playlist/pop/Playlist_pop.json'
 
 import PlaylistPropsType from "../types/PlaylistPropsType";
 import IsPlayingType from '../types/IsplayingType'
@@ -18,12 +20,9 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
   currentData: PlaylistPropsType[], setCurrentData: React.Dispatch<React.SetStateAction<PlaylistPropsType[]>>,
   audioRef: React.MutableRefObject<HTMLAudioElement>
 }) {
-  // const [currentPlay, setCurrentPlay] = useState<number>(0);
-  // const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(radioData.data);
-  const [isPlaying, setIsPlaying] = useState<any[]>([]);
-  // const audioRef = useRef() as React.MutableRefObject<HTMLAudioElement>;
-  // const sliderRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
+  const [isPlaying, setIsPlaying] = useState<any[]>([]);
+  const [playlistPop, setPlaylistPop] = useState<PlaylistPropsType[]>(PlaylistPop.data);
 
   useEffect(() => {
       fillIsPlaying();
@@ -38,13 +37,13 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
     setIsPlaying(arr);
   }
 
-  function addData() {
-    let arr = [];
-    for(let i = 0; i < 4; i++) {
-      arr.push({id: currentData.length + i, album: "test", artist: "test", url: "test"})
-    }
-    setCurrentData([...currentData, ...arr]);
-  }
+  // function addData() {
+  //   let arr = [];
+  //   for(let i = 0; i < 4; i++) {
+  //     arr.push({id: currentData.length + i, album: "test", artist: "test", url: "test"})
+  //   }
+  //   setCurrentData([...currentData, ...arr]);
+  // }
 
 
   return (
@@ -60,13 +59,16 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
           {currentData.map((item, index) => (
             <Radio data={item} setCurrentData={setCurrentData} key={index}
             currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} 
-            forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
+            forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+            type="long"/>
           ))}
         </RadioContainer>
-        <button onClick={e=> addData()}>ADd Data</button>
-        {currentData.map((item, index) => {
+        {playlistPop.map((item, index) => {
           return (
-            <RadioBox key={index}/>
+            <Radio data={item} setCurrentData={setCurrentData} key={index}
+            currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} 
+            forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+            type="long"/>
           )
         })}
       </main>

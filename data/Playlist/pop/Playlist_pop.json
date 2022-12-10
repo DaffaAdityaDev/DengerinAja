@@ -1,0 +1,58 @@
+{
+    "data" : [{
+            "id": 0,
+            "title": "Hindia Secukupnya",
+            "artist": "Hindia",
+            "album": "Hindia",
+            "url": "/audio/pop/Hindia - Hindia Secukupnya.mp3",
+            "img": "img",
+            "slug": "Hindia-Secukupnya"
+        },
+        {
+            "id": 1,
+            "title": "Joji Glimpse of us",
+            "artist": "Joji",
+            "album": "Nectar",
+            "url": "/audio/pop/Joji_Glimpse_of_us.mp3",
+            "img": "img",
+            "slug": "Joji-Glimpse-of-us"
+        },
+        {
+            "id": 2,
+            "title": "Judika_Bagaimana_kalau_aku_Tidak_baik_baik_saja",
+            "artist": "Judika",
+            "album": "Judika",
+            "url": "/audio/pop/Judika_Bagaimana_kalau_aku_Tidak_baik_baik_saja.mp3",
+            "img": "img",
+            "slug": "Judika-Bagaimana-kalau-aku-Tidak-baik-baik-saja"
+        },
+        {
+            "id": 3,
+            "title": "Juicy_Luicy_lantas",
+            "artist": "Juicy_Luicy",
+            "album": "Juicy_Luicy",
+            "url": "/audio/pop/Juicy_Luicy_lantas.mp3",
+            "img": "img",
+            "slug": "Juicy-Luicy-lantas"
+        },
+        {
+            "id": 4,
+            "title": "Runtuh_Feby_Putri_feat_Fiersa_besari",
+            "artist": "Runtuh_Feby_Putri_feat_Fiersa_besari",
+            "album": "Feby Putri feat Fiersa besari",
+            "url": "/audio/pop/Runtuh_Feby_Putri_feat_Fiersa_besari.mp3",
+            "img": "img",
+            "slug": "Runtuh-Feby-Putri-feat-Fiersa-besari"
+        }, 
+        {
+            "id": 5,
+            "title": "Tulus_Langit_abuabu",
+            "artist": "Tulus",
+            "album": "Langit abuabu",
+            "url": "/audio/pop/Tulus_Langit_abuabu.mp3",
+            "img": "img",
+            "slug": "Tulus-Langit-abuabu"
+        }
+       
+    ]
+}

@@ -15,6 +15,8 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
   const [currentPlayProgress, setCurrentPlayProgress] = useState<number>(0);
   const [currentVolume, setCurrentVolume] = useState<number>(0);
 
+
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPlayTime(secondToTime(Math.floor(audioRef.current.currentTime)));
@@ -23,8 +25,9 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
         setCurrentPlayProgress(Math.floor(audioRef.current.currentTime / audioRef.current.duration * 100));
       }
       if(audioRef.current.volume) {
-        setCurrentVolume(Math.floor(audioRef.current.volume * 100));
+        setCurrentVolume(audioRef.current.volume * 100);
       }
+    
     }, 300);
     return () => clearInterval(interval);
 
@@ -46,7 +49,6 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
       return `${h}:${m}:${s}`;
     }
   }
-  
   let ControlButtonMusic = (selector: string) => {
     let index = currentData.findIndex((item: { id: number; }) => item.id === currentPlay);
 
@@ -56,6 +58,7 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
       }
       if (index === currentData.length) {
         setCurrentPlay(currentData[0].id);
+        setIsPlaying(true)
         if(audioRef.current){
           audioRef.current.pause();
           audioRef.current.load();
@@ -63,6 +66,7 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
         }
       }
       setCurrentPlay(currentData[index + 1].id);
+      setIsPlaying(true)
       if(audioRef.current){
         audioRef.current.pause();
         audioRef.current.load();
@@ -101,19 +105,21 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
   }
   let ChangeProgress = () => {
     if(audioRef.current.currentTime) {
+      setCurrentPlayProgress(Math.floor(audioRef.current.currentTime / audioRef.current.duration * 100));
       audioRef.current.currentTime = (sliderRef.current.valueAsNumber / 100) * audioRef.current.duration;
     }
   }
   let ChangeVolume = () => {
     if(audioRef.current.volume) {
       audioRef.current.volume = sliderVolumeRef.current.valueAsNumber / 100;
+      setCurrentVolume(Math.floor(audioRef.current.volume * 100));
     }
   }
 
   
   return (
     <>
-      <div className={styles.Audio__container}>
+      <div className={styles.audio__container}>
         <div className={styles.contentInfo}>
           <Image src="/Image/Music_placeholder.jpg" width={50} height={50} alt={''}/>
           <div>
@@ -121,21 +127,52 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
             <h1 className={styles.contentInfo__artist}>{currentData[currentPlay].artist}</h1>
           </div>
         </div>
-        <div>
+        <div className={styles.playback__container}>
           <audio preload="none" ref={audioRef}>
             <source src={currentData[currentPlay].url} type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
-          <h1>Time {currentPlayTime}</h1>
-          <h1>Duration {currentPlayDuration}</h1>
-          <button onClick={e => PauseMusic()}>{isPlaying ? "Pause" : "Play"}</button>
-          <button onClick={e => ControlButtonMusic("prev")}>prev</button>
-          <button onClick={e => ControlButtonMusic("next")}>next</button>
-          <h1>{currentVolume}</h1>
-          <input type={"range"} min={0} max={100} ref={sliderRef} value={currentPlayProgress} onChange={e => ChangeProgress()}/>
-          <input type={"range"} min={0} max={100} ref={sliderVolumeRef} value={currentVolume} onChange={e => ChangeVolume()}/>
+          <div className={styles.playback__controller}>
+            <div className={styles.Root__navbar_icon} onClick={e => ControlButtonMusic("prev")}>
+              <Image src="/icon/icons8-skip-to-start-100.png" 
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              fill alt="Backward Icon"/>
+            </div>
+            
+            {isPlaying ? 
+              <div className={styles.Root__navbar_icon} onClick={e => PauseMusic()}>
+                <Image src="/icon/icons8-stop-circled-100.png" 
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
+                fill alt="Backward Icon"/>
+              </div> : <div className={styles.Root__navbar_icon} onClick={e => PauseMusic()}>
+                <Image src="/icon/icons8-circled-play-100.png" 
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
+                fill alt="Backward Icon"/>
+              </div>
+            }
+            <div className={styles.Root__navbar_icon} onClick={e => ControlButtonMusic("next")}>
+              <Image src="/icon/icons8-end-100.png" 
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              fill alt="Backward Icon"/>
+            </div>
+          </div>
+          <div className={styles.playback__infoAndProgress}>
+            <h1>{currentPlayTime}</h1>
+            <input type={"range"} min={0} max={100} ref={sliderRef} value={currentPlayProgress} onChange={e => ChangeProgress()}/>
+            <h1>{currentPlayDuration}</h1>
+          </div>
+          
         </div>
-        <div>fix me</div>
+        <input type={"range"} min={2} max={100} ref={sliderVolumeRef} value={currentVolume} onChange={e => ChangeVolume()}/>
+
       </div>
     </>
   )

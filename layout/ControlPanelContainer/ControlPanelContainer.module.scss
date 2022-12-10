@@ -12,9 +12,36 @@
     
     .Root__navbarTop {
         grid-area: navbar-top;
-        width: 100%;
+        width: calc(100% - 2rem);
         height: 60px;
-        background-color: beige;
+        background-color: black;
+        display: flex;
+        color: white;
+        align-items: center;
+        padding: 1rem;
+        justify-content: space-between;
+        .Root__navbarTop_left {
+            display: flex;
+            .Root__navbar_icon {
+                width: 30px;
+                height: 30px;
+                position: relative;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    position: relative !important;
+                    object-fit: cover;
+                }
+            }
+
+        }
+        .Root__navbarTop_right {
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
+        }
+        
     }
 
     .Root__navbar {
@@ -34,6 +61,23 @@
         }
         .Root__navbar_main {
             display: flex;
+            align-items: center;
+            font-size: 24px;
+            p {
+                width: 100%;
+            }
+            .Root__navbar_icon {
+                width: 30px;
+                height: 30px;
+                position: relative;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    position: relative !important;
+                    object-fit: cover;
+                }
+            }
         }
         .Root__navbarList {
             margin-top: 1rem;
@@ -47,6 +91,19 @@
         }
         .Root__navbar_playlistAndLike {
             margin-top: 1rem;
+    
+            .Root__navbar_icon {
+                display: flex;
+                width: 30px;
+                height: 30px;
+                position: relative;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    position: relative !important;
+                    object-fit: cover;
+                }
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './ControlPanelContainer.module.scss'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import AudioPlayer from '../../components/AudioPlayer/AudioPlayer'
 import PlaylistPropsType from "../../types/PlaylistPropsType";
@@ -17,9 +18,23 @@ function ControlPanelContainer({ currentPlay, setCurrentPlay, currentData, setCu
     <>
       <div className={styles.Root__container}>
         <div className={styles.Root__navbarTop}>
-          <div>lefticon</div>
-          <div>righticon</div>
-          <div>
+          <div className={styles.Root__navbarTop_left}>
+            <div className={styles.Root__navbar_icon}>
+              <Image src="/icon/icons8-go-back-100.png" 
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              fill alt="Backward Icon"/>
+            </div>
+            <div className={styles.Root__navbar_icon}>
+              <Image src="/icon/icons8-circled-right-100.png" 
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              fill alt="Foward Icon"/>
+            </div>
+          </div>
+          <div className={styles.Root__navbarTop_right}>
             <div>Upgrade</div>
             <div>Accound</div>
           </div>
@@ -27,24 +42,56 @@ function ControlPanelContainer({ currentPlay, setCurrentPlay, currentData, setCu
         <nav className={styles.Root__navbar}>
           <div className={styles.Root__navbarList}>
             <h1 className={styles.Root__navbar_logo}>Dengerin aja</h1>
-            <ul>
-              <div className={styles.Root__navbar_main}>
-                <Image src="/icon/icons8-home-page-96.png" />
-                <li>Home</li>
+            <div className={styles.Root__navbar_main}>
+              <div className={styles.Root__navbar_icon}>
+                <Image src="/icon/icons8-home-page-96.png" 
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
+                fill alt="home Icon"/>
               </div>
-              <li>Library</li>
-              <li>Search</li>
-            </ul>
+              <p>Home</p>
+            </div>
+            <div className={styles.Root__navbar_main}>
+              <div className={styles.Root__navbar_icon}>
+                <Image src="/icon/icons8-music-library-100.png" 
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
+                fill alt="Library Icon"/>
+              </div>
+              <p>Library</p>
+            </div>
+            <div className={styles.Root__navbar_main}>
+              <div className={styles.Root__navbar_icon}>
+                <Image src="/icon/icons8-search-more-96.png" 
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
+                fill alt="Search Icon"/>
+              </div>
+              <p>Search</p>
+            </div>
           </div>
           <div className={styles.Root__navbar_playlistAndLike}>
-            <div>
-              <button>Create Playlist</button>
+            <div className={styles.Root__navbar_icon}>
+              <Image src="/icon/icons8-add-new-100.png" 
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              fill alt="Playlist Icon"/>
+              <p>Create Playlist</p>
             </div>
-            <div>
+            <div className={styles.Root__navbar_icon}>
+              <Image src="/icon/icons8-heart-64.png" 
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+              fill alt="Liked Icon"/>
               <Link href="">
-                <h1>Liked Song</h1>
+                <p>Liked Song</p>
               </Link>
-            </div>
+            </div> 
           </div>
         </nav>
         <div className={styles.Root__audioPlayer}>
