@@ -1,6 +1,5 @@
 .Root__container {
     height: 100vh;
-    background: skyblue;
     display: grid;
     grid-template-areas:
         "navbar navbar-top navbar-top"
@@ -9,9 +8,11 @@
         "audio-player audio-player audio-player";
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr auto;
+    position: relative;
     
     .Root__navbarTop {
         grid-area: navbar-top;
+        // position: fixed;
         width: calc(100% - 2rem);
         height: 60px;
         background-color: black;
@@ -46,6 +47,7 @@
 
     .Root__navbar {
         grid-area: navbar;
+        position: relative;
         width: 200px;
         height: 100%;
         background-color: black;
@@ -109,6 +111,8 @@
 
     .Root__audioPlayer {
         grid-area: audio-player;
+        // position: fixed;
+        // top: 100vh;
         width: 100%;
         height: 100px;
         background-color: aquamarine;
@@ -116,6 +120,9 @@
 
     .Root__mainView {
         grid-area: main-view;
+        // position: relative;
+        overflow: auto;
+        // z-index: -1;
         width: 100%;
         height: 100%;
         background-color: blue;

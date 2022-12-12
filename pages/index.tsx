@@ -45,6 +45,11 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
   //   setCurrentData([...currentData, ...arr]);
   // }
 
+  // console.log(currentData current)
+  function changeData() {
+    setCurrentData(playlistPop);
+    setCurrentPlay(0);
+  }
 
   return (
     <div>
@@ -55,6 +60,7 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
       </Head>
       
       <main> 
+        <button onClick={() => changeData()}>change</button>
         <RadioContainer>
           {currentData.map((item, index) => (
             <Radio data={item} setCurrentData={setCurrentData} key={index}
@@ -71,6 +77,22 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
             type="long"/>
           )
         })}
+        {/* {playlistPop.map((item, index) => {
+          return (
+            <Radio data={item} setCurrentData={setCurrentData} key={index}
+            currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} 
+            forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+            type="long"/>
+          )
+        })}
+        {playlistPop.map((item, index) => {
+          return (
+            <Radio data={item} setCurrentData={setCurrentData} key={index}
+            currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} 
+            forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+            type="long"/>
+          )
+        })} */}
       </main>
     </div>
   )

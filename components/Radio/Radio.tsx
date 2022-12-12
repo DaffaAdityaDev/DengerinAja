@@ -16,14 +16,13 @@ function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef
     // query: { name: "test" }
   }
 
-  // console.log(currentPlayList)
+  // console.log(currentP)
 
   let ChangeData = () => {
-    setCurrentData(currentPlayList)
-    setCurrentPlay(data.id)
-
-    
+    // setCurrentData(currentPlayList)
+    // setCurrentPlay(data.id)
   }
+
   return (
     <>
     {type === "long" ? 
