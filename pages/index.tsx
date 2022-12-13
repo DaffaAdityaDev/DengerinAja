@@ -7,8 +7,7 @@ import AudioPlayer from '../components/AudioPlayer/AudioPlayer'
 import Radio from '../components/Radio/Radio'
 
 import RadioData from '../data/Radio/Radio_data.json'
-
-import PlaylistPop from '../data/Playlist/pop/Playlist_pop.json'
+// import PlaylistPop from '../data/Playlist/pop/Playlist_pop.json'
 
 import PlaylistPropsType from "../types/PlaylistPropsType";
 import IsPlayingType from '../types/IsplayingType'
@@ -22,7 +21,7 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
 }) {
 
   const [isPlaying, setIsPlaying] = useState<any[]>([]);
-  const [playlistPop, setPlaylistPop] = useState<PlaylistPropsType[]>(PlaylistPop.data);
+  // const [playlistPop, setPlaylistPop] = useState<PlaylistPropsType[]>(PlaylistPop.data);
 
   useEffect(() => {
       fillIsPlaying();
@@ -46,10 +45,10 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
   // }
 
   // console.log(currentData current)
-  function changeData() {
-    setCurrentData(playlistPop);
-    setCurrentPlay(0);
-  }
+  // function changeData() {
+  //   setCurrentData(playlistPop);
+  //   setCurrentPlay(0);
+  // }
 
   return (
     <div>
@@ -60,16 +59,16 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
       </Head>
       
       <main> 
-        <button onClick={() => changeData()}>change</button>
-        <RadioContainer>
+        {/* <button onClick={() => changeData()}>change</button> */}
+        {/* <RadioContainer>
           {currentData.map((item, index) => (
             <Radio data={item} setCurrentData={setCurrentData} key={index}
             currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} 
             forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
             type="long"/>
           ))}
-        </RadioContainer>
-        {playlistPop.map((item, index) => {
+        </RadioContainer> */}
+        {currentData.map((item, index) => {
           return (
             <Radio data={item} setCurrentData={setCurrentData} key={index}
             currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} 

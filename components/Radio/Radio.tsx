@@ -15,12 +15,24 @@ function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef
     pathname:`/Radio/${data.slug}`,
     // query: { name: "test" }
   }
-
-  // console.log(currentP)
+  // console.log(isPlaying[data.id])
 
   let ChangeData = () => {
-    // setCurrentData(currentPlayList)
-    // setCurrentPlay(data.id)
+    setCurrentPlay(data.id);
+    setIsPlaying(isPlaying.map((item: any) => {
+      if(item.id === data.id) {
+        item.isPlaying = !item.isPlaying;
+      } else {
+        item.isPlaying = false;
+      }
+      return item;
+    }))
+    if(forwardedRef.current){
+      forwardedRef.current.pause();
+      forwardedRef.current.load();
+      forwardedRef.current.play();
+    }
+
   }
 
   return (
@@ -28,12 +40,12 @@ function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef
     {type === "long" ? 
     
       <div className={styles.radio__container}>
-        <Link href={url} className={styles.radio__imgContainer}>
+        {/* <Link href={url} className={styles.radio__imgContainer}> */}
           <img src="https://unsplash.it/200/200" alt="img" />
-        </Link>
-        <Link href={url} className={styles.nameAndPlay__container}>
+        {/* </Link> */}
+        {/* <Link href={url} className={styles.nameAndPlay__container}> */}
           <h1 className={styles.radio__name}>{data.album}</h1>
-        </Link>
+        {/* </Link> */}
         <button className={styles.play__button} onClick={e => ChangeData()}>{isPlaying[data.id]?.isPlaying ? "Stop" : "Play"}</button>
       </div> : type === "box" ? <h1>box</h1> : <h1>default</h1>
     }
