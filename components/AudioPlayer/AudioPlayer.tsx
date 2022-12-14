@@ -15,8 +15,6 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
   const [currentPlayProgress, setCurrentPlayProgress] = useState<number>(0);
   const [currentVolume, setCurrentVolume] = useState<number>(0);
 
-
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPlayTime(secondToTime(Math.floor(audioRef.current.currentTime)));
