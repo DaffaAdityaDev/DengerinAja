@@ -25,7 +25,7 @@ function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef
       } else {
         item.isPlaying = false;
       }
-      return item;
+      return item; 
     }))
     if(forwardedRef.current){
       forwardedRef.current.pause();
