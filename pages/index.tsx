@@ -20,21 +20,21 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
   audioRef: React.MutableRefObject<HTMLAudioElement>
 }) {
 
-  const [isPlaying, setIsPlaying] = useState<any[]>([]);
   // const [playlistPop, setPlaylistPop] = useState<PlaylistPropsType[]>(PlaylistPop.data);
+  
 
-  useEffect(() => {
-      fillIsPlaying();
-  }, [])
+  // useEffect(() => {
+  //     fillIsPlaying();
+  // }, [])
 
-  function fillIsPlaying() {
-    let arr = [];
-    for(let i = 0; i < currentData.length; i++) {
-      arr.push({id: currentData[i].id, isPlaying: false});
-    }
+  // function fillIsPlaying() {
+  //   let arr = [];
+  //   for(let i = 0; i < currentData.length; i++) {
+  //     arr.push({id: currentData[i].id, isPlaying: false});
+  //   }
     
-    setIsPlaying(arr);
-  }
+  //   setIsPlaying(arr);
+  // }
 
   // function addData() {
   //   let arr = [];
@@ -72,8 +72,7 @@ export default function Home({ currentPlay, setCurrentPlay, currentData, setCurr
           return (
             <Radio data={item} setCurrentData={setCurrentData} key={index}
             currentPlay={currentPlay} setCurrentPlay={setCurrentPlay} 
-            forwardedRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
-            type="long"/>
+            forwardedRef={audioRef} type="long"/>
           )
         })}
         {/* {playlistPop.map((item, index) => {

@@ -6,7 +6,8 @@
             "album": "Hindia",
             "url": "/audio/pop/Hindia_Secukupnya.mp3",
             "img": "img",
-            "slug": "Hindia-Secukupnya"
+            "slug": "Hindia-Secukupnya",
+            "playing": false
         },
         {
             "id": 1,
@@ -15,7 +16,8 @@
             "album": "Nectar",
             "url": "/audio/pop/Joji_Glimpse_of_us.mp3",
             "img": "img",
-            "slug": "Joji-Glimpse-of-us"
+            "slug": "Joji-Glimpse-of-us",
+            "playing": false
         },
         {
             "id": 2,
@@ -24,7 +26,8 @@
             "album": "Judika",
             "url": "/audio/pop/Judika_Bagaimana_kalau_aku_Tidak_baik_baik_saja.mp3",
             "img": "img",
-            "slug": "Judika-Bagaimana-kalau-aku-Tidak-baik-baik-saja"
+            "slug": "Judika-Bagaimana-kalau-aku-Tidak-baik-baik-saja",
+            "playing": false
         },
         {
             "id": 3,
@@ -33,7 +36,8 @@
             "album": "Juicy_Luicy",
             "url": "/audio/pop/Juicy_Luicy_lantas.mp3",
             "img": "img",
-            "slug": "Juicy-Luicy-lantas"
+            "slug": "Juicy-Luicy-lantas",
+            "playing": false
         },
         {
             "id": 4,
@@ -42,7 +46,8 @@
             "album": "Feby Putri feat Fiersa besari",
             "url": "/audio/pop/Runtuh_Feby_Putri_feat_Fiersa_besari.mp3",
             "img": "img",
-            "slug": "Runtuh-Feby-Putri-feat-Fiersa-besari"
+            "slug": "Runtuh-Feby-Putri-feat-Fiersa-besari",
+            "playing": false
         }, 
         {
             "id": 5,
@@ -51,7 +56,8 @@
             "album": "Langit abuabu",
             "url": "/audio/pop/Tulus_Lagit_Abuabu.mp3",
             "img": "img",
-            "slug": "Tulus-Langit-abuabu"
+            "slug": "Tulus-Langit-abuabu",
+            "playing": false
         }
        
     ]

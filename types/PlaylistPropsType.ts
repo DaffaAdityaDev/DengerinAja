@@ -6,6 +6,7 @@ type PlaylistPropsType = {
     url: string,
     img: string,
     slug: string,
+    playing: boolean,
 }
 
 export default PlaylistPropsType;
