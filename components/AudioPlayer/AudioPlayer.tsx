@@ -15,7 +15,7 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
   const [currentPlayProgress, setCurrentPlayProgress] = useState<number>(0);
   const [currentVolume, setCurrentVolume] = useState<number>(0);
 
-  console.log(currentData)
+
   
 
   useEffect(() => {
@@ -66,7 +66,7 @@ function AudioPlayer({ currentData, currentPlay, setCurrentPlay, audioRef, slide
           audioRef.current.play();
         }
       }
-      setCurrentPlay(currentData[index + 1].id);
+      setCurrentPlay(currentData[index + 1].id); 
       setIsPlaying(true)
       if(audioRef.current){
         audioRef.current.pause();
