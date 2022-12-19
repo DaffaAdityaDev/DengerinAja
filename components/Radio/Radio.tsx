@@ -14,7 +14,7 @@ function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef
 
   const url = {
     pathname:`/Radio/${data.slug}`,
-    // query: { name: "test" }
+    query: { radio: data.radio }
   }
   // console.log(currentData)
 
@@ -28,18 +28,20 @@ function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef
   //   }
 
   // }
+  // console.log(data)
+  
 
   return (
     <>
     {type === "long" ? 
     
       <div className={styles.radio__container}>
-        {/* <Link href={url} className={styles.radio__imgContainer}> */}
+        <Link href={url} className={styles.radio__imgContainer}>
           <img src="https://unsplash.it/200/200" alt="img" />
-        {/* </Link> */}
-        {/* <Link href={url} className={styles.nameAndPlay__container}> */}
+        </Link>
+        <Link href={url} className={styles.nameAndPlay__container}>
           <h1 className={styles.radio__name}>{data.album}</h1>
-        {/* </Link> */}
+        </Link>
         <button className={styles.play__button} onClick={e => ChangeData()}>{data.playing ? "Stop" : "Play"}</button>
       </div> : type === "box" ? <h1>box</h1> : <h1>default</h1>
     }

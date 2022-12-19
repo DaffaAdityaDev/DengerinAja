@@ -7,7 +7,9 @@
             "album": "RIM Pilgrim",
             "url": "/audio/RIM_Pilgrim.mp3",
             "img": "img",
-            "slug": "Radio_Rim"
+            "slug": "Radio_Rim",
+            "playing": false,
+            "radio": "Radio_Rim"
         },{
             "id": 1,
             "title": "Bury the Light",
@@ -15,7 +17,9 @@
             "album": "Bury the Light",
             "url": "/audio/Bury the Light Vergils battle theme from Devil May Cry 5.mp3",
             "img": "img",
-            "slug": "Radio_Burry_the_Light"
+            "slug": "Radio_Burry_the_Light",
+            "playing": false,
+            "radio": "Radio_data"
         }
     ]
 }
