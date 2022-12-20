@@ -29,7 +29,6 @@ function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef
 
   // }
   // console.log(data)
-  
 
   return (
     <>
