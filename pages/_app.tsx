@@ -11,7 +11,7 @@ import PlaylistPropsType from "../types/PlaylistPropsType";
 import ControlPanelContainer from '../layout/ControlPanelContainer/ControlPanelContainer'
 export default function App({ Component, pageProps }: AppProps) {
   const [currentPlay, setCurrentPlay] = useState<number>(0);
-  const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(radioData.data);
+  const [currentData , setCurrentData] = useState<PlaylistPropsType[]>(PlaylistPop.data);
   const audioRef = useRef() as React.MutableRefObject<HTMLAudioElement>;
   const sliderRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const sliderVolumeRef = useRef() as React.MutableRefObject<HTMLInputElement>;
