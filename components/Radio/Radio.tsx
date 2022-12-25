@@ -6,10 +6,10 @@ import rim from '../../data/Radio/Radio_Rim.json'
 import Link from 'next/link'
 import { isDataView } from 'util/types'
 
-function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef, isPlaying, setIsPlaying, type, } : 
+function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef, type, } : 
   {data: PlaylistProps, setCurrentData: Dispatch<PlaylistProps[]>, currentPlay: number, 
     setCurrentPlay: Dispatch<number>, forwardedRef: React.MutableRefObject<HTMLAudioElement>,
-    isPlaying: any[], setIsPlaying: Dispatch<Object[]>, type: string}, ) {
+    type: string}, ) {
       
 
   const url = {
@@ -41,7 +41,7 @@ function Radio({ data, setCurrentData, currentPlay, setCurrentPlay, forwardedRef
         {/* <Link href={url} className={styles.nameAndPlay__container}> */}
           <h1 className={styles.radio__name}>{data.album}</h1>
         {/* </Link> */}
-        <button className={styles.play__button} onClick={e => ChangeData()}>{data.playing ? "Stop" : "Play"}</button>
+        {/* <button className={styles.play__button} onClick={e => ChangeData()}>{data.playing ? "Stop" : "Play"}</button> */}
       </div> : type === "box" ? <h1>box</h1> : <h1>default</h1>
     }
     </>

@@ -1,5 +1,5 @@
 type PlaylistPropsType = {
-    radio: string;
+    radio?: string;
     id: number,
     title: string,
     artist: string,
